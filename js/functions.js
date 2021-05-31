@@ -1,4 +1,4 @@
-let url = "https://tt905.herokuapp.com/mensagens"
+let url = "https://tt905.herokuapp.com/mensagens/"
 
 async function callFetchWithGet(){
     let headers = new Headers();
@@ -33,13 +33,20 @@ async function callFetchWithPost(mensagem){
     await fetch(url, options);
 }
 
-async function callFetchWithPut(){
-    let headers = new Headers();
+async function callFetchWithPut(id, novaMensagem){
     const options = {
         method : 'GET',
         mode: 'cors',
-        headers: headers
+        headers: {
+            'Accept' : 'application/json',
+            'content-type' : 'application/json'            
+        }, 
+        body :JSON.stringify({
+            'mensagem' : novaMensagem
+        })
     }
+    await fetch(`${url}${id}`, options);
+    
 }
 
 async function callFetchWithDelete(){
