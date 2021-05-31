@@ -35,7 +35,7 @@ async function callFetchWithPost(mensagem){
 
 async function callFetchWithPut(id, novaMensagem){
     const options = {
-        method : 'GET',
+        method : 'PUT',
         mode: 'cors',
         headers: {
             'Accept' : 'application/json',
@@ -46,14 +46,16 @@ async function callFetchWithPut(id, novaMensagem){
         })
     }
     await fetch(`${url}${id}`, options);
-    
 }
 
-async function callFetchWithDelete(){
-    let headers = new Headers();
+async function callFetchWithDelete(id){
     const options = {
-        method : 'GET',
+        method : 'DELETE',
         mode: 'cors',
-        headers: headers
+        headers: {
+            'Accept' : 'application/json',
+            'content-type' : 'application/json' 
+        }
     }
+    await fetch(`${url}${id}`, options);
 }
